@@ -1,11 +1,14 @@
 import ProductsCard from "../components/ProductsCard";
+import Header from "../components/common/Header";
 import { getRandomColor } from "../lib/utils";
 
 const FavoritesPage = () => {
 	const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
 	return (
-		<div className='bg-[#faf9fb] flex-1 p-10 min-h-screen'>
+		<div className='flex-1 overflow-auto relative z-10'>
+			<Header title='Favourites' />
+		<div className='bg-[#26113b] flex-1 p-10 min-h-screen'>
 			<div className='max-w-screen-lg mx-auto'>
 				<p className='font-bold text-3xl md:text-5xl my-4'>My Favorites</p>
 
@@ -20,6 +23,7 @@ const FavoritesPage = () => {
 						<ProductsCard key={products.id} products={products} {...getRandomColor()} />
 					))}
 				</div>
+			</div>
 			</div>
 		</div>
 	);

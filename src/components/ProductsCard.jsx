@@ -3,14 +3,14 @@ import { useState } from "react";
 
 const ProductsCard = ({ products, bg, badge }) => {
 	
-	const [isFavorite, setIsFavorite] = useState(localStorage.getItem("favorites")?.includes(products.title));
+	const [isFavorite, setIsFavorite] = useState(localStorage.getItem("favorites")?.includes(products.name));
 
 	const addProductsToFavorites = () => {
 		let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-		const isProductsAlreadyInFavorites = favorites.some((fav) => fav.title === products.title);
+		const isProductsAlreadyInFavorites = favorites.some((fav) => fav.name === products.name);
 
 		if (isProductsAlreadyInFavorites) {
-			favorites = favorites.filter((fav) => fav.title !== products.title);
+			favorites = favorites.filter((fav) => fav.name !== products.name);
 			setIsFavorite(false);
 		} else {
 			favorites.push(products);
@@ -58,16 +58,16 @@ const ProductsCard = ({ products, bg, badge }) => {
 			</a>
 
 			<div className='flex mt-1'>
-				<p className='font-bold tracking-wide'>{products.title}</p>
+				<p className='font-bold tracking-wide'>{products.name}</p>
 			</div>
 			<p className='my-2'>
-				{products.email[0].charAt(0).toUpperCase() + products.email[0].slice(1)} Kitchen
+				{products.category[0].charAt(0).toUpperCase() + products.category[0].slice(1)} Kitchen
 			</p>
 
 			<div className='flex gap-2 mt-auto'>
 					<div className={`flex gap-1 ${badge} items-center p-1 rounded-md`}>
 						<Store size={16} />
-						<span className='text-sm tracking-tighter font-semibold'>{products.title}</span>
+						<span className='text-sm tracking-tighter font-semibold'>{products.name}</span>
 					</div>
 					{/* <div className="items-center gap-2 card-actions justify-end flex-1">
 					<Store size={16} />

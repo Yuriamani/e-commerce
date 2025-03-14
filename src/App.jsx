@@ -1,15 +1,17 @@
 import { Routes, Route } from "react-router-dom";
 
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/common/Sidebar";
 
 import HomePage from "./pages/HomePage"
 import FavouritesPage from "./pages/FavouritesPage"
 import ProductsPage from "./pages/ProductsPage";
+import ProductsPage1 from "./pages/ProductsPage1";
 import ShopPage from "./pages/ShopPage"
 import HistoryPage from "./pages/HistoryPage"
 import WalletPage from "./pages/WalletPage";
 import CartPage from "./pages/CartPage"
 import SettingsPage from "./pages/SettingsPage"
+import Product from "./components/Product"
 
 
 
@@ -28,6 +30,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage/>} />
         <Route path="/products" element={<ProductsPage/>} />
+        <Route path="/products-1" element={<ProductsPage1/>} />
+        <Route path="/products/:id" element={<Product/>} />
         <Route path="/shops" element={<ShopPage/>} />
         <Route path="/favourites" element={<FavouritesPage/>} />
         <Route path="/wallet" element={<WalletPage/>} />
